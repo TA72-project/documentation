@@ -1,0 +1,102 @@
+Table addresses {
+  id bigserial [PK]
+  number int
+  street_name text [not null]
+  postcode text [not null]
+  city_name text [not null]
+  complement text
+}
+
+Table users {
+  id bigserial [PK]
+  fname text [not null]
+  lname text [not null]
+  mail text [not null, unique]
+  phone text
+  password text
+  token text
+  token_gentime timestamp
+  id_center bigint [ref: > centers.id, not null]
+}
+
+Table nurses {
+  id bigserial [PK]
+  minutes_per_week int [not null]
+  id_user bigint [ref: > users.id, not null, unique]
+  id_address bigint [ref: > addresses.id, not null]
+}
+
+Table patients {
+  id bigserial [PK]
+  id_user bigint [ref: > users.id, not null, unique]
+  id_address bigint [ref: > addresses.id, not null]
+}
+
+Table managers {
+  id bigserial [PK]
+  id_user bigint [ref: > users.id, not null, unique]
+}
+
+Table availabilities {
+  id bigserial [PK]
+  start timestamp [not null]
+  end timestamp [not null]
+  recurrent bool [not null]
+  id_nurse bigint [ref: > nurses.id, not null]
+}
+
+Table skills {
+  id bigserial [PK]
+  name text [not null, unique]
+}
+
+Table l_nurses_skills {
+  id_nurse bigint [ref: > nurses.id, not null]
+  id_skill bigint [ref: > skills.id, not null]
+}
+
+Table mission_types {
+  id bigserial [PK]
+  name text [not null, unique]
+  people_required smallint [not null, default: 1]
+}
+
+Table missions {
+  id bigserial [PK]
+  desc text
+  start timestamp [not null]
+  end timestamp [not null]
+  recurrence_days smallint
+  people_required smallint [not null, default: 1]
+  id_mission_type bigint [ref: > mission_types.id, not null]
+  id_patient bigint [ref: > patients.id, not null]
+}
+
+Table l_missions_skills {
+  id_mission_type bigint [ref: > mission_types.id, not null]
+  id_skill bigint [ref: > skills.id, not null]
+  preferred bool [not null, default: false]
+}
+
+Table centers {
+  id bigserial [PK]
+  name text [not null, unique]
+  desc text
+  workday_start time [not null]
+  workday_end time [not null]
+  range_km smallint [not null]
+  id_address bigint [ref: > addresses.id, not null]
+}
+
+Table visits {
+  id bigserial [PK]
+  start timestamp [not null]
+  end timestamp [not null]
+  id_mission bigint [ref: > missions.id, not null]
+}
+
+Table l_visits_nurses {
+  id_visit bigint [ref: > visits.id, not null]
+  id_nurse bigint [ref: > nurses.id, not null]
+  report text
+}

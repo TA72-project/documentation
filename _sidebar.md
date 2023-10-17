@@ -1,4 +1,5 @@
 <!-- docs/_sidebar.md -->
 
 * [Home](/)
-* [scm](./en/scm.md)
+* [SCM](./en/scm.md)
+* [DB](./en/db.md)
