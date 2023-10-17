@@ -1,3 +1,3 @@
-# Headline
+# Maintenance guide
 
-> An awesome project.
+This website documentation aim to provide all necessary information for maintainer of the project.
