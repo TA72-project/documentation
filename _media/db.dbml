@@ -51,8 +51,8 @@ Table skills {
 }
 
 Table l_nurses_skills {
-  id_nurse bigint [ref: > nurses.id, not null]
-  id_skill bigint [ref: > skills.id, not null]
+  id_nurse bigint [PK, ref: > nurses.id, not null]
+  id_skill bigint [PK, ref: > skills.id, not null]
 }
 
 Table mission_types {
@@ -73,8 +73,8 @@ Table missions {
 }
 
 Table l_missions_skills {
-  id_mission_type bigint [ref: > mission_types.id, not null]
-  id_skill bigint [ref: > skills.id, not null]
+  id_mission_type bigint [PK, ref: > mission_types.id, not null]
+  id_skill bigint [PK, ref: > skills.id, not null]
   preferred bool [not null, default: false]
 }
 
@@ -96,7 +96,7 @@ Table visits {
 }
 
 Table l_visits_nurses {
-  id_visit bigint [ref: > visits.id, not null]
-  id_nurse bigint [ref: > nurses.id, not null]
+  id_visit bigint [PK, ref: > visits.id, not null]
+  id_nurse bigint [PK, ref: > nurses.id, not null]
   report text
 }
