@@ -8,7 +8,7 @@ INSERT INTO public.centers (id, name, "desc", workday_start, workday_end, range_
 INSERT INTO public.mission_types (id, name, people_required) VALUES (1, 'Ménage', 1);
 INSERT INTO public.users (id, fname, lname, mail, phone, password, token, token_gentime, id_center) VALUES (1, 'Kevin', 'DUPONT', 'kevin.dupont@gmail.com', NULL, NULL, NULL, NULL, 1);
 INSERT INTO public.users (id, fname, lname, mail, phone, password, token, token_gentime, id_center) VALUES (2, 'Mamie', 'GATEAU', 'mamie.gateau@gmail.com', NULL, NULL, NULL, NULL, 1);
-INSERT INTO public.patients (id, id_user, id_address) VALUES (1, 1, 5);
+INSERT INTO public.patients (id, id_user, id_address) VALUES (1, 2, 5);
 INSERT INTO public.missions (id, "desc", start, "end", recurrence_days, people_required, id_mission_type, id_patient) VALUES (1, NULL, '2023-10-23 09:00:00', '2023-10-23 18:00:00', 7, 1, 1, 1);
 INSERT INTO public.nurses (id, minutes_per_week, id_user, id_address) VALUES (1, 2100, 1, 4);
 INSERT INTO public.skills (id, name) VALUES (1, 'Balayer');
