@@ -14,8 +14,6 @@ Table users {
   mail text [not null, unique]
   phone text
   password text
-  token text
-  token_gentime timestamp
   id_center bigint [ref: > centers.id, not null]
 }
 
@@ -59,6 +57,7 @@ Table mission_types {
   id bigserial [PK]
   name text [not null, unique]
   people_required smallint [not null, default: 1]
+  minutes_duration int [not null]
 }
 
 Table missions {
@@ -68,6 +67,7 @@ Table missions {
   end timestamp [not null]
   recurrence_days smallint
   people_required smallint [not null, default: 1]
+  minutes_duration int [not null]
   id_mission_type bigint [ref: > mission_types.id, not null]
   id_patient bigint [ref: > patients.id, not null]
 }
