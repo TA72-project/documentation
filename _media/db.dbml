@@ -5,6 +5,7 @@ Table addresses {
   postcode text [not null]
   city_name text [not null]
   complement text
+  id_zone bigint [ref: > zones.id, not null]
 }
 
 Table users {
@@ -14,7 +15,6 @@ Table users {
   mail text [not null, unique]
   phone text
   password text
-  id_center bigint [ref: > centers.id, not null]
 }
 
 Table nurses {
@@ -33,6 +33,7 @@ Table patients {
 Table managers {
   id bigserial [PK]
   id_user bigint [ref: > users.id, not null, unique]
+  id_center bigint [ref: > centers.id, not null]
 }
 
 Table availabilities {
@@ -84,8 +85,6 @@ Table centers {
   desc text
   workday_start time [not null]
   workday_end time [not null]
-  range_km smallint [not null]
-  id_address bigint [ref: > addresses.id, not null]
 }
 
 Table visits {
@@ -99,4 +98,10 @@ Table l_visits_nurses {
   id_visit bigint [PK, ref: > visits.id, not null]
   id_nurse bigint [PK, ref: > nurses.id, not null]
   report text
+}
+
+Table zones {
+  id bigserial [PK]
+  name text [not null]
+  id_center bigint [ref: > centers.id, not null]
 }
