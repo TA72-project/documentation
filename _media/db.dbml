@@ -69,6 +69,7 @@ Table missions {
   recurrence_days smallint
   people_required smallint [not null, default: 1]
   minutes_duration int [not null]
+  archived bool [not null, default: false]
   id_mission_type bigint [ref: > mission_types.id, not null]
   id_patient bigint [ref: > patients.id, not null]
 }
